@@ -12,12 +12,15 @@ black = (0, 0, 0)
 white = (255,255,255)
 purple = (98, 5, 213)
 blue = (4, 0, 127)
-
-
+red = (122, 1, 1)
 
 HEIGHT = 500
 WIDTH = 1000
-
+############Death screen 
+death = Actor('death')
+death.x = 500
+death.y = 250
+death.scale = 10
 #####BACK_GROUND
 
 sky = Actor('blue_sky')
@@ -43,7 +46,7 @@ shr.images = ['shark1','shark2','shark3']
 
 velocity = 0 #jump speed
 
-gravity = 0.8 #change velocity
+gravity = 0.5 #change velocity
 
 
 ####INTERFACE BG
@@ -63,6 +66,7 @@ start_game = False
 ######GAME_OVER 
 game_over = False
 def update():
+    global game_over
     global gravity 
     global velocity 
     global start_game
@@ -75,7 +79,7 @@ def update():
     #jump in air
 
     if keyboard.up and cow.y == 300:
-        velocity = -18
+        velocity = -15
     cow.y += velocity  
     velocity += gravity
 
@@ -94,10 +98,10 @@ def update():
     if cow.colliderect(shr):
         shr.x = random.randint(600, 3000)
         shr.y = random.randint(300, 2000)
-        game_over == False 
+        game_over = True 
 ## MOVE SHARK
     if game_over == False:
-        shr.x -= 6
+        shr.x -= 7
     ## VOID SHARK
     if shr.x < -50:
         shr.x = random.randint(900, 5000)
@@ -107,6 +111,7 @@ def update():
 
 def draw():
     global start_game
+    global game_over
     if start_game == False: 
         random_start.draw()
         ####start Text
@@ -117,7 +122,9 @@ def draw():
         sky.draw()
         cow.draw()
         shr.draw()
-    elif game_over == True:
+        if game_over == True:
+            death.draw()
+            screen.draw.text("Your died", centerx = 500, centery = 250, color =(red), fontname='snow', fontsize= 80)
         
         
     
