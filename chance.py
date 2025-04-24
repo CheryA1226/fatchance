@@ -52,6 +52,7 @@ gravity = 0.5 #change velocity
 ####INTERFACE BG
 this_is_not_offincive = {'cow', 
                          'raindow_sky',
+                         'baby'
                          }
 start = random.choice(list(this_is_not_offincive))
 random_start = Actor(start)
