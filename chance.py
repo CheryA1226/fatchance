@@ -52,7 +52,6 @@ gravity = 0.5 #change velocity
 ####INTERFACE BG
 this_is_not_offincive = {'cow', 
                          'raindow_sky',
-                         'baby'
                          }
 start = random.choice(list(this_is_not_offincive))
 random_start = Actor(start)
@@ -111,9 +110,9 @@ def update():
 ######## Restart Button
 def draw_play_again_button(sky):
     button_rect = pygame.Rect(WIDTH // 10, HEIGHT // 25)
-    pygame.draw.rect(sky, WHITE, button_rect)
+    pygame.draw.rect(sky, white, button_rect)
     font = pygame.font.Font('snow', 24)
-    text = font.render('Play Again', True, BLACK)
+    text = font.render('Play Again', True, black)
     text_rect = text.get_rect(center=button_rect.center)
     sky.blit(text, text_rect)
     return button_rect
