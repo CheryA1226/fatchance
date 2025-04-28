@@ -108,6 +108,16 @@ def update():
         shr.x = random.randint(900, 5000)
         shr.y = random.randint(250, 350)
 
+######## Restart Button
+def draw_play_again_button(sky):
+    button_rect = pygame.Rect(WIDTH // 10, HEIGHT // 25)
+    pygame.draw.rect(sky, WHITE, button_rect)
+    font = pygame.font.Font('snow', 24)
+    text = font.render('Play Again', True, BLACK)
+    text_rect = text.get_rect(center=button_rect.center)
+    sky.blit(text, text_rect)
+    return button_rect
+
 
 
 def draw():
