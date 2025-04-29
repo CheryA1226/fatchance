@@ -126,14 +126,12 @@ def update():
         if game_over == False:
             eneamy.x -= 7
     ## VOID SHARK
-        if eneamy.x < -50:
-            eneamy.x = random.randint(1000, 1500)
-            eneamy.y = 300
-##########POINTS SHR
-        if eneamy.x < -40:
-            score = 1 + score 
-    
-    
+    if shr.x < -50:
+        shr.x = random.randint(900, 5000)
+        shr.y = random.randint(250, 350)
+
+
+
 def draw():
     global start_game
     global game_over
