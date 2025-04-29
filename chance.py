@@ -62,6 +62,18 @@ random_start.scale = 10
 ###########################Start 
 start_game = False
 
+##### Restart button setup
+restart_button = Rect((400, 320), (200, 50))
+
+def reset_game():
+    global cow, shr, velocity, start_game, game_over
+    cow.y = 300
+    cow.x = 200
+    shr.x = random.randint(900, 5000)
+    shr.y = random.randint(250, 350)
+    velocity = 0
+    game_over = False
+    start_game = False
 
 ######GAME_OVER 
 game_over = False
@@ -107,17 +119,6 @@ def update():
         shr.x = random.randint(900, 5000)
         shr.y = random.randint(250, 350)
 
-######## Restart Button
-def draw_play_again_button(sky):
-    button_rect = pygame.Rect(WIDTH // 10, HEIGHT // 25)
-    pygame.draw.rect(sky, white, button_rect)
-    font = pygame.font.Font('snow', 24)
-    text = font.render('Play Again', True, black)
-    text_rect = text.get_rect(center=button_rect.center)
-    sky.blit(text, text_rect)
-    return button_rect
-
-
 
 def draw():
     global start_game
@@ -135,8 +136,12 @@ def draw():
         if game_over == True:
             death.draw()
             screen.draw.text("Your died", centerx = 500, centery = 250, color =(red), fontname='snow', fontsize= 80)
-        
-        
-    
+            screen.draw.filled_rect(restart_button, red)
+            screen.draw.text("Restart", centerx=restart_button.centerx, centery=restart_button.centery, color=black, fontname='snow', fontsize=40)
+
+def on_mouse_down(pos):
+    global game_over
+    if game_over and restart_button.collidepoint(pos):
+        reset_game()
 
 pgzrun.go()
